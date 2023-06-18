@@ -1,0 +1,83 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	min-height: 100vh;
+	background: #282828; 
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 20px;
+	color: #fea400;
+}
+
+form input, form select {
+	margin-bottom: 10px;
+	padding: 5px;
+}
+
+form button {
+	cursor: pointer;
+	margin-top: 10px;
+	padding: 5px 10px;
+	background: #fea400;
+	color: #282828;
+	font-weight: bold;
+}
+
+form button:hover {
+	background: #df9a06;
+}
+
+label {
+	margin-bottom: 5px;
+}
+
+#message {
+	color: #fea400;
+}
+
+#username, #email, #password, #password-again {
+	width: 200px;
+}
+
+#do-register {
+	margin-bottom: 10px;
+}
+
+#logout {
+	cursor: pointer;
+	margin-top: 20px;
+	padding: 5px 10px;
+	background: #fea400;
+	color: #282828;
+	font-weight: bold;
+}
+
+#logout:hover {
+	background: #df9a06;
+}
+
+@media (min-width: 650px) {
+	form {
+		width: 400px;
+	}
+
+	#username, #email, #password, #password-again {
+		width: 100%;
+	}
+}
+
+@media (min-width: 1400px) {
+	form {
+		width: 600px;
+	}
+}

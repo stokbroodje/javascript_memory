@@ -2,48 +2,39 @@
 <html>
 	<head>
 		<title>Memory</title>
-		<link rel="stylesheet" href="main.css" />
+		<link rel="stylesheet" href="css/main.css" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 	</head>
-	<body>
+	<body onload="OnLoad()">
 		<div class ="container">
 			<div class ="header">
-				<div class ="menu_btn">
+				<div class ="menu_btn" onclick="menu()">
 					<div class="line"></div>
 					<div class="line"></div>
 					<div class="line"></div>
 				</div>
 				<div class="title">Memory</div>
 				<div class="restart_button">
-					<span id='login'></span>
 					<img class="restart" src="img/restart.png" alt="restart button">
 				</div>
 			</div>
-			<div class="menu">
+			<div class="menu" id="menu">
 				<div id="theme">
-				<select name="theme" id="theme">
-					<option value="nature">Colors</option>
-					<option value="nature">Nature</option>
-					<option value="cars">Cars</option>
-					<option value="food">Food</option>
-				</select> 
-				<label for="theme">Select a theme</label>
+					<select id="picture-select" onchange="onSelect()">
+						<option value="dog">Doggos</option>
+						<option value="cat">Kitties</option>
+					</select> 
+					<label for="theme">Select a theme</label>
 				</div>
-
 				<div id="card_color">
 					<input type="color" id="closed_card" name="closed_card" value="#df9a06" onchange="colorChange()">
 					<label for="closed_card">Closed card</label>
 				</div>
 			</div>
 			<div class="game_state">
+				<span id='login'></span>
 				<div id="game_time">Time: 0sec</div>
-				<div id="picture_choose">
-					<select id="picture-select" onchange="onSelect()">
-						<option value="none">Select Picture Set:</option>
-						<option value="dog">Doggos</option>
-						<option value="cat">Kitties</option>
-					</select> 
-					</div>
+				
 				<div id="found_pairs">Pairs: <span id='pairs'>0</span></div>
 				<div id="progress_bar"></div>
 			</div>
@@ -62,5 +53,6 @@
 		</div>
 		<script type="text/javascript" src="backend.js"></script>
 		<script type="text/javascript" src="memory.js"></script>
+		<script type='text/javascript' src='settings.js'></script>
 	</body>
 </html>

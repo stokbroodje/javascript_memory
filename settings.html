@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<title>Memory</title>
-		<link rel='stylesheet' href='main.css' />
+		<link rel='stylesheet' href='css/settings.css' />
 		<meta name='viewport' content='width=device-width, initial-scale=1' />
 	</head>
 	<body>
@@ -10,16 +10,24 @@
 			<span id='message'></span>
 			<span id='login'></span>
 			<form>
+				<label for="email">Email</label>
 				<input type='text' id='email' /><br>
+				<label for="api">Select card theme:</label>
 				<select id="api">
 					<option value="none">Select Picture Set:</option>
 					<option value="dog">Doggos</option>
 					<option value="cat">Kitties</option>
 				</select><br>
-				<label for='color-found'>Color found</label>				
-				<input type='color' id='color-found' /><br>
-				<label for='color-closed'>Color closed</label>				
-				<input type='color' id='color-closed' /><br>
+				<div class ="color_select">
+					<div class="color-div">
+						<label for='color-found'>Color found</label>				
+						<input type='color' id='color-found' /><br>
+					</div>
+					<div class="color-div">
+						<label for='color-closed'>Color closed</label>				
+						<input type='color' id='color-closed' /><br>
+					</div>
+				</div>
 				<button type='button' id='submit'>submit</button>
 			</form>
 		</div>

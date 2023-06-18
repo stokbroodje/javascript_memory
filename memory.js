@@ -104,6 +104,32 @@ function onSelect() {
 	}
 }
 
+function OnLoad(){
+	let board = document.getElementById("game_board");
+	board.innerHTML = '';
+	
+	buttons = {};
+	openButton = null;
+	done = [];
+	pairs = 0;
+	let promises = [];
+		for (let i = 0; i < BOARD_SIZE / 2; i++) {
+			promises.push(fetch(DOG_API).then(res => res.json()).then(res => res.message));
+		}
+	Promise.all(promises).then(makeBoard);
+}
+
+function menu(){
+	let menu = document.getElementById('menu');
+	if(menu.style.display == 'flex'){
+		menu.style.display = 'none';
+	}else{
+		menu.style.display = 'flex';
+	}
+	
+	console.log(menu.getPropertyValue());
+}
+
 function onCardClick(evt) {
 	if (done.includes(this))
 	return;
