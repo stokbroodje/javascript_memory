@@ -1,0 +1,31 @@
+monolog:
+    channels:
+        - deprecation # Deprecations are logged in the dedicated "deprecation" channel when it exists
+
+when@dev:
+    monolog:
+        handlers:
+            main:
+                type: rotating_file
+                max_files: 10
+                path: "%kernel.logs_dir%/%kernel.environment%.log"
+                level: info
+                formatter: 'memory.custom-formatter'
+            doctrine:
+                type: stream
+                path: "%kernel.logs_dir%/doctrine.log"
+                level: info
+                channels: ['doctrine']
+                formatter: 'memory.custom-formatter'
+            routes:
+                type: stream
+                path: "%kernel.logs_dir%/request.log"
+                level: info
+                channels: ['request']
+                formatter: 'memory.custom-formatter'
+            error:
+                type: stream
+                path: "%kernel.logs_dir%/error.log"
+                level: error
+                formatter: 'memory.custom-formatter'
+

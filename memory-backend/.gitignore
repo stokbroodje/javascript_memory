@@ -1,0 +1,32 @@
+
+###> symfony/framework-bundle ###
+/.env.local
+/.env.local.php
+/.env.*.local
+/config/secrets/prod/prod.decrypt.private.php
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###
+.idea
+*.swl
+err.html
+*test*
+
+###> lexik/jwt-authentication-bundle ###
+### normaliter zou je deze sleutels NOOIT onder versiebeheer zetten
+### Om het runnen wat te vereenvoudigen hebben we dit nu wel gedaan
+### /config/jwt/*.pem
+###< lexik/jwt-authentication-bundle ###
+
+.DS_Store
+notities.txt
+*.swp
+
+#node
+node_modules
+package-lock.json
+package.json
+
+create/*_token
+puppeteer/
