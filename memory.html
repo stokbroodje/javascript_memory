@@ -5,7 +5,7 @@
 		<link rel="stylesheet" href="css/main.css" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 	</head>
-	<body onload="OnLoad()">
+	<body>
 		<div class ="container">
 			<div class ="header">
 				<div class ="menu_btn" onclick="menu()">
@@ -28,7 +28,9 @@
 				</div>
 				<div id="card_color">
 					<input type="color" id="closed_card" name="closed_card" value="#df9a06" onchange="colorChange()">
-					<label for="closed_card">Closed card</label>
+					<label for="closed_card">Closed card</label><br>
+					<input type="color" id="found_card" name="found_card" value="#df9a06" onchange="colorChange()">
+					<label for="found_card">Found card</label>
 				</div>
 			</div>
 			<div class="game_state">
@@ -53,6 +55,5 @@
 		</div>
 		<script type="text/javascript" src="backend.js"></script>
 		<script type="text/javascript" src="memory.js"></script>
-		<script type='text/javascript' src='settings.js'></script>
-	</body>
-</html>
+	></script>
+	</b

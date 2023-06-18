@@ -1,6 +1,19 @@
 // UTILITIES
 // =========
 
+function toFullColor(col) {
+	// expecting either '#rrggbb' or '#rgb' and converting to '#rrggbb'
+
+	if (col.length == 7)
+		return col;
+	
+	let r = col[1],
+		g = col[2],
+		b = col[3];
+	
+	return '#' + r + r + g + g + b + b;
+}
+
 function shuffleArray(array) {
 	let currentIndex = array.length,
 		randomIndex;
@@ -104,30 +117,15 @@ function onSelect() {
 	}
 }
 
-function OnLoad(){
-	let board = document.getElementById("game_board");
-	board.innerHTML = '';
-	
-	buttons = {};
-	openButton = null;
-	done = [];
-	pairs = 0;
-	let promises = [];
-		for (let i = 0; i < BOARD_SIZE / 2; i++) {
-			promises.push(fetch(DOG_API).then(res => res.json()).then(res => res.message));
-		}
-	Promise.all(promises).then(makeBoard);
-}
-
 function menu(){
-	let menu = document.getElementById('menu');
-	if(menu.style.display == 'flex'){
-		menu.style.display = 'none';
+	let m = document.getElementById('menu');
+	if(m.style.display == 'flex'){
+		m.style.display = 'none';
 	}else{
-		menu.style.display = 'flex';
+		m.style.display = 'flex';
 	}
 	
-	console.log(menu.getPropertyValue());
+	console.log(m.getPropertyValue());
 }
 
 function onCardClick(evt) {
@@ -160,9 +158,13 @@ function onCardClick(evt) {
 
 function colorChange() {
 	let color = document.getElementById("closed_card").value;
+//	let fcolor = document.getElementById("found_card").value;
 	
 	for (let x of document.getElementsByClassName("card"))
 		x.style.backgroundColor = color;
+
+//	for (let x of document.getElementsByClassName("done"))
+//		x.style.backgroundColor = fcolor;
 }
 
 function updateTop() {
@@ -190,5 +192,26 @@ function updateLogin() {
 	});
 }
 
+function updatePref() {
+	getUser().then(user =>
+		callBackend('GET', `api/player/${user.id}/preferences`).then(({ color_found, color_closed, preferred_api }) => {
+			if (!preferred_api)
+				preferred_api = 'none';
+			if (!color_found)
+				color_found = '#00ff00';
+			if (!color_closed)
+				color_closed = '#ffff00';
+	
+			document.getElementById('found_card').value = toFullColor(color_found);
+			document.getElementById('closed_card').value = toFullColor(color_closed);
+			document.getElementById('picture-select').value = preferred_api;
+
+			onSelect();
+			setTimeout(colorChange, 500);
+		})
+	);	
+}
+
 updateTop();
 updateLogin();
+updatePref();

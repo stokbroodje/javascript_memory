@@ -13,7 +13,7 @@ function toFullColor(col) {
 
 function updateLogin() {
 	let span = document.getElementById('login');
-	
+
 	getUser().then(user => {
 		if (!user) {
 			window.location.href = 'login.html?m=restricted';
